@@ -11,12 +11,14 @@
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@fontsource/ubuntu": "^4.5.11",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "evaluator.js": "^3.2.4",
     "framer-motion": "^6.4.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.6.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

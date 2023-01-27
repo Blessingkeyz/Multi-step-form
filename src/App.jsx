@@ -1,14 +1,13 @@
-import './App.css'
-import Calculator from './components/Calculator'
-import Nav from './components/Nav'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Form from "./components/Form";
 
 function App() {
   return (
-    <>
-      <Nav />
-      <Calculator />
-    </>
-  )
+    <Routes>
+      <Route path={"/"} element={<Form />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

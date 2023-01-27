@@ -911,6 +911,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@fontsource/ubuntu@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/ubuntu/-/ubuntu-4.5.11.tgz#71b75fda2f4b14aa20b39a7a3c8bc34c81fde609"
+  integrity sha512-c+B8A8r31hJLk8Ek7Svoz4GwjtInhc60LFM6XTr5TKtZbcct8TPNxJuKX4+hnqoWgcvy8s0Gj4mde4TcK/SgDQ==
+
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz#e5d2e450306a9491e3bd77e323e38d7aff315996"
@@ -1008,6 +1013,11 @@
   version "2.11.5"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
+
+"@remix-run/router@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.2.1.tgz#812edd4104a15a493dda1ccac0b352270d7a188c"
+  integrity sha512-XiY0IsyHR+DXYS5vBxpoBe/8veTeoRpMHP+vDosLZxL5bnpetzI0igkxkLZS235ldLzyfkxF+2divEwWHP3vMQ==
 
 "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
@@ -1374,20 +1384,10 @@ estree-walker@^2.0.1:
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
 
-evaluate@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/evaluate/-/evaluate-1.0.2.tgz#de8942346c8046e693f586aef30ace5603eced89"
-  integrity sha512-eCEnkJHtDE1dDuw8AKWFUupbI5j104KBwHqHxcsn/r+uei2rE/jTZt30XR5tjQXCRp0KlGdDzoVBSBPTh0fj1w==
-
 evaluator.js@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/evaluator.js/-/evaluator.js-3.2.4.tgz#130b764a2f9465a1439331bc289ca2b5205284fb"
   integrity sha512-3Ec/fIc5w1oKP+LA0ZhzZ//wkVuwrCz4s7Re6c5VLLu8sHzSSthiv/FFwqOXuwWMy7Iw3oZNvStiXDDk8IAItA==
-
-evaluator@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/evaluator/-/evaluator-1.0.2.tgz#ab2802f886b16fbf64b62cee513d2c5ea9129a23"
-  integrity sha512-zX63FSvXwa5fyl0Ef7WfAvTUNng05PLBCZJ4qBBQX1Dqjhylip9nKnNdI9Fv3oOyx+LdT0EGV6qLPROLneu39g==
 
 find-root@^1.1.0:
   version "1.1.0"
@@ -1697,6 +1697,21 @@ react-remove-scroll@^2.5.4:
     tslib "^2.1.0"
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
+
+react-router-dom@^6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.6.2.tgz#bbf1f9b45855b218d22fc2d294b79408a084740a"
+  integrity sha512-6SCDXxRQqW5af8ImOqKza7icmQ47/EMbz572uFjzvcArg3lZ+04PxSPp8qGs+p2Y+q+b+S/AjXv8m8dyLndIIA==
+  dependencies:
+    "@remix-run/router" "1.2.1"
+    react-router "6.6.2"
+
+react-router@6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.6.2.tgz#556f7b56cff7fe32c5c02429fef3fcb2ecd08111"
+  integrity sha512-uJPG55Pek3orClbURDvfljhqFvMgJRo59Pktywkk8hUUkTY2aRfza8Yhl/vZQXs+TNQyr6tu+uqz/fLxPICOGQ==
+  dependencies:
+    "@remix-run/router" "1.2.1"
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
