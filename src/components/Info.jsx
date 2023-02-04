@@ -6,9 +6,9 @@ const Personal = ({ userRef, nextPage }) => {
   return (
     <Box>
       <Box
-        ml={"100px"}
-        mt="50px"
-        width={["none", "450px"]}
+        ml={["16px", "100px"]}
+        mt={["40px", "50px"]}
+        width={["300px", "450px"]}
         h={["300px", "550px"]}
       >
         <Header

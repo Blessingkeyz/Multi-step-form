@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "@fontsource/ubuntu";
-
 import {
   Box,
   Button,
   Checkbox,
+  Circle,
   Flex,
   FormControl,
   Image,
@@ -18,13 +18,82 @@ import ArcadeImg from "../assets/images/icon-arcade.svg";
 import AdvancedImg from "../assets/images/icon-advanced.svg";
 import ProImg from "../assets/images/icon-pro.svg";
 
+export const SideCompoM = ({ circlebgcolor, numcolor, step }) => (
+  <Flex mr={"15px"}>
+    <Circle
+      h="32px"
+      w="32px"
+      border="1px hsl(206, 94%, 87%) solid"
+      bgColor={circlebgcolor}
+    >
+      <Text
+        fontFamily={"Ubuntu"}
+        fontWeight={"600"}
+        fontSize={"15px"}
+        lineHeight={"13px"}
+        color={numcolor}
+      >
+        {step}
+      </Text>
+    </Circle>
+  </Flex>
+);
+export const SideCompo = ({ circlebgcolor, numcolor, step, details }) => (
+  <Flex mb={"33px"}>
+    <Circle
+      h="32px"
+      w="32px"
+      border="1px hsl(206, 94%, 87%) solid"
+      bgColor={circlebgcolor}
+    >
+      <Text
+        // pos={"absolute"}
+        // ml="10px"
+        fontFamily={"Ubuntu"}
+        fontWeight={"600"}
+        fontSize={"15px"}
+        lineHeight={"13px"}
+        color={numcolor}
+      >
+        {step}
+      </Text>
+    </Circle>
+    <Box pos={"relative"} display="flex-column">
+      <Text
+        // pos={"absolute"}
+        ml="15px"
+        fontFamily={"Ubuntu"}
+        fontWeight={"500"}
+        fontSize={"12px"}
+        lineHeight={"13px"}
+        color={"white"}
+        opacity=".5"
+      >
+        STEP {step}
+      </Text>
+      <Text
+        // pos={"relative"}
+        ml="15px"
+        mt={"5px"}
+        fontFamily={"Ubuntu"}
+        fontWeight={"600"}
+        fontSize={"14px"}
+        lineHeight={"15px"}
+        color={"hsl(0, 0%, 100%)"}
+      >
+        {details}
+      </Text>
+    </Box>
+  </Flex>
+);
+
 export const Header = ({ text, title }) => (
   <VStack position={"relative"} alignItems="flex-start" right={"0px"}>
     <Text
-      width={["none", "none", "350px", "500px"]}
+      width={["290px", "300px", "350px", "500px"]}
       fontFamily={"Ubuntu"}
       fontWeight={"700"}
-      fontSize={"32px"}
+      fontSize={["26px", "32px"]}
       lineHeight={"43.2px"}
       color={"#153460"}
     >
@@ -32,10 +101,10 @@ export const Header = ({ text, title }) => (
     </Text>
 
     <Text
-      width={["none", "none", "450px", "450px"]}
+      width={["290px", "300px", "450px", "450px"]}
       fontFamily={"Ubuntu"}
       fontWeight={"500"}
-      fontSize={"16.5px"}
+      fontSize={["15", "16.5px"]}
       lineHeight={"25px"}
       color={"#9A9BA0"}
     >
@@ -56,12 +125,12 @@ export const Inputs = ({
   inp2P,
   inp3P,
 }) => (
-  <Flex w="450px" flexDirection={"column"} position={"absolute"}>
+  <Flex w={["290px", "450px"]} flexDirection={"column"} position={"absolute"}>
     {/* Input 1*/}
     <FormControl margin={"30px 0px"}>
       <Text
-        margin={"13px 0px"}
-        width={["none", "none", "450px", "450px"]}
+        margin={["0px 0px 10px 0px", "13px 0px"]}
+        width="100px"
         fontFamily={"Ubuntu"}
         fontWeight={"500"}
         fontSize={"16px"}
@@ -74,10 +143,11 @@ export const Inputs = ({
         position={"absolute"}
         alignItems={"center"}
         fontWeight={"700"}
+        fontSize={["15px", "16px"]}
         color=" hsl(213, 96%, 18%) "
         fontFamily={"Ubuntu"}
         gap={"8px"}
-        width={["327px", "445px"]}
+        width={["290px", "445px"]}
         height={"45px"}
         type={"text"}
         ref={(el) => (userRef.current["fullname"] = el)}
@@ -89,8 +159,8 @@ export const Inputs = ({
     {/* Input 2 */}
     <FormControl margin={"30px 0px"}>
       <Text
-        margin={"13px 0px"}
-        width={["none", "none", "450px", "450px"]}
+        margin={["0px 0px 10px 0px", "13px 0px"]}
+        width="150px"
         fontFamily={"Ubuntu"}
         fontWeight={"500"}
         fontSize={"16px"}
@@ -103,10 +173,11 @@ export const Inputs = ({
         position={"absolute"}
         alignItems={"center"}
         fontWeight={"700"}
+        fontSize={["15px", "16px"]}
         color=" hsl(213, 96%, 18%) "
         fontFamily={"Ubuntu"}
         gap={"8px"}
-        width={["327px", "445px"]}
+        width={["290px", "445px"]}
         height={"45px"}
         type={"email"}
         ref={(el) => (userRef.current["email"] = el)}
@@ -118,8 +189,8 @@ export const Inputs = ({
     {/* Input 3*/}
     <FormControl margin={"30px 0px"}>
       <Text
-        margin={"13px 0px"}
-        width={["none", "none", "450px", "450px"]}
+        margin={["0px 0px 10px 0px", "13px 0px"]}
+        width="150px"
         fontFamily={"Ubuntu"}
         fontWeight={"500"}
         fontSize={"16px"}
@@ -134,8 +205,9 @@ export const Inputs = ({
         fontWeight={"700"}
         color=" hsl(213, 96%, 18%) "
         fontFamily={"Ubuntu"}
+        fontSize={["15px", "16px"]}
         gap={"8px"}
-        width={["327px", "445px"]}
+        width={["290px", "445px"]}
         height={"45px"}
         type={"phone"}
         ref={(el) => (userRef.current["phone"] = el)}
@@ -145,11 +217,14 @@ export const Inputs = ({
     </FormControl>
 
     {/* Submit */}
-    <FormControl w="450px">
+    <FormControl w={["290px", "450px"]}>
       <Button
-        width={"120px"}
-        height={"50px"}
-        margin={"100px 0px 0px 325px"}
+        width={["100px", "120px"]}
+        height={["40px", "50px"]}
+        mt={["135px", "102px"]}
+        mb={["10px", "0px"]}
+        ml={["200px", "325px"]}
+        // margin={"102px 0px 0px 325px"}
         borderRadius={"10px"}
         color={"white"}
         // _hover="none"
@@ -169,48 +244,119 @@ export const Inputs = ({
   </Flex>
 );
 
-export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
+export const PlanInputs = ({
+  nextPage,
+  previousPage,
+  userRef,
+  userData,
+  isYearly,
+  handleChange,
+}) => {
   const handleClick1 = () => {
     userRef.current["plan"].value = "Arcade";
-
-    document.getElementById(arcade).style.border = "1px solid #AA00FF";
+    document
+      .getElementById("arcade")
+      .setAttribute(
+        "style",
+        "border : 1px solid #174A8B; background-color : hsl(217, 100%, 97%)"
+      );
+    document
+      .getElementById("advanced")
+      .setAttribute(
+        "style",
+        "border : 1px solid #D9D9DB; background-color : white"
+      );
+    document
+      .getElementById("pro")
+      .setAttribute(
+        "style",
+        "border : 1px solid #D9D9DB; background-color : white"
+      );
   };
   const handleClick2 = () => {
     userRef.current["plan"].value = "Advanced";
+    document
+      .getElementById("advanced")
+      .setAttribute(
+        "style",
+        "border : 1px solid #174A8B; background-color : hsl(217, 100%, 97%)"
+      );
+    document
+      .getElementById("arcade")
+      .setAttribute(
+        "style",
+        "border : 1px solid #D9D9DB; background-color : white"
+      );
+    document
+      .getElementById("pro")
+      .setAttribute(
+        "style",
+        "border : 1px solid #D9D9DB; background-color : white"
+      );
   };
   const handleClick3 = () => {
     userRef.current["plan"].value = "Pro";
+    document
+      .getElementById("pro")
+      .setAttribute(
+        "style",
+        "border : 1px solid #174A8B; background-color : hsl(217, 100%, 97%)"
+      );
+    document
+      .getElementById("arcade")
+      .setAttribute(
+        "style",
+        "border : 1px solid #D9D9DB; background-color : white"
+      );
+    document
+      .getElementById("advanced")
+      .setAttribute(
+        "style",
+        "border : 1px solid #D9D9DB; background-color : white"
+      );
   };
+
+  // const isYearly = userRef.current["duration"].checked == true;
+  console.log("is yearly is " + isYearly);
+  console.log(userData.duration);
   return (
     <Box>
-      <Flex w="450px" position={"relative"}>
+      <Flex
+        w={["290px", "450px"]}
+        position={"relative"}
+        flexDir={["column", "row"]}
+      >
         {/* Arcade*/}
-        <FormControl mr={"10px"}>
+        <FormControl>
           <Box
             id="arcade"
-            width={"140px"}
-            height={"160px"}
+            w={["290px", "140px"]}
+            height={isYearly ? ["100px", "180px"] : ["75px", "160px"]}
             display="flex"
-            margin={"40px 0px"}
+            mt={["25px", "40px"]}
+            mb={["5px", "40px"]}
             borderRadius={"10px"}
             color={"blue"}
             onClick={handleClick1}
-            // _hover="none"
             fontFamily={"Ubuntu"}
             fontStyle={"normal"}
             fontWeight={"500"}
             fontSize={"16px"}
             lineHeight={"36px"}
-            _active={{ border: "1px solid red" }}
+            _hover={{ border: "1px solid #174A8B" }}
             border="1px solid #D9D9DB"
-            bgColor={"white"}
             ref={(el) => (userRef.current["plan"] = el)}
             pos="relative"
           >
-            <Image pos={"absolute"} src={ArcadeImg} mt="20px" ml="15px" />
+            <Image
+              pos={"absolute"}
+              src={ArcadeImg}
+              mt={["15px", "20px"]}
+              ml="15px"
+            />
             <Text
               pos={"absolute"}
-              margin={"105px 15px"}
+              margin={["20px 70px", "105px 15px"]}
               fontFamily={"Ubuntu"}
               fontWeight={"700"}
               fontSize={"16px"}
@@ -220,30 +366,42 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
               Arcade
             </Text>
             <Text
-              value="me"
               pos={"absolute"}
-              margin={"125px 15px"}
+              margin={["42px 70px", "125px 15px"]}
               fontFamily={"Ubuntu"}
               fontWeight={"500"}
-              fontSize={"16px"}
+              fontSize={"14px"}
               lineHeight={"15px"}
               color={"#9A9BA0"}
             >
-              $9/mo
+              ${isYearly ? "90/yr" : "9/mo"}
+            </Text>
+            <Text
+              display={isYearly ? "yes" : "none"}
+              pos={"absolute"}
+              margin={["65px 70px", "150px 15px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              fontSize={"14px"}
+              lineHeight={"15px"}
+              color="hsl(213, 96%, 18%)"
+            >
+              2 months free
             </Text>
           </Box>
         </FormControl>
 
         {/* Advanced*/}
-        <FormControl mr={"10px"}>
+        <FormControl>
           <Box
-            width={"140px"}
-            height={"160px"}
+            id="advanced"
+            w={["290px", "140px"]}
+            height={isYearly ? ["100px", "180px"] : ["75px", "160px"]}
             display="flex"
-            margin={"40px 0px"}
+            my={["5px", "40px"]}
             borderRadius={"10px"}
             color={"blue"}
-            // _hover="none"
+            _hover={{ border: "1px solid #174A8B" }}
             fontFamily={"Ubuntu"}
             fontStyle={"normal"}
             fontWeight={"500"}
@@ -251,13 +409,17 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
             lineHeight={"36px"}
             border="1px solid #D9D9DB"
             onClick={handleClick2}
-            bgColor={"white"}
             pos="relative"
           >
-            <Image pos={"absolute"} src={AdvancedImg} mt="20px" ml="15px" />
+            <Image
+              pos={"absolute"}
+              src={AdvancedImg}
+              mt={["15px", "20px"]}
+              ml="15px"
+            />
             <Text
               pos={"absolute"}
-              margin={"105px 15px"}
+              margin={["20px 70px", "105px 15px"]}
               fontFamily={"Ubuntu"}
               fontWeight={"700"}
               fontSize={"16px"}
@@ -268,14 +430,26 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
             </Text>
             <Text
               pos={"absolute"}
-              margin={"125px 15px"}
+              margin={["42px 70px", "125px 15px"]}
               fontFamily={"Ubuntu"}
               fontWeight={"500"}
-              fontSize={"16px"}
+              fontSize={"14px"}
               lineHeight={"15px"}
               color={"#9A9BA0"}
             >
-              $12/mo
+              ${isYearly ? "120/yr" : "12/mo"}
+            </Text>
+            <Text
+              display={isYearly ? "yes" : "none"}
+              pos={"absolute"}
+              margin={["65px 70px", "150px 15px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              fontSize={"14px"}
+              lineHeight={"15px"}
+              color="hsl(213, 96%, 18%)"
+            >
+              2 months free
             </Text>
           </Box>
         </FormControl>
@@ -283,13 +457,15 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
         {/* Pro*/}
         <FormControl>
           <Box
-            width={"140px"}
-            height={"160px"}
+            id="pro"
+            w={["290px", "140px"]}
+            height={isYearly ? ["100px", "180px"] : ["75px", "160px"]}
             display="flex"
-            margin={"40px 0px"}
+            mt={["5px", "40px"]}
+            mb={["25px", "40px"]}
             borderRadius={"10px"}
             color={"blue"}
-            // _hover="none"
+            _hover={{ border: "1px solid #174A8B" }}
             fontFamily={"Ubuntu"}
             fontStyle={"normal"}
             fontWeight={"500"}
@@ -297,14 +473,18 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
             lineHeight={"36px"}
             border="1px solid #D9D9DB"
             onClick={handleClick3}
-            bgColor={"white"}
             type={"submit"}
             pos="relative"
           >
-            <Image pos={"absolute"} src={ProImg} mt="20px" ml="15px" />
+            <Image
+              pos={"absolute"}
+              src={ProImg}
+              mt={["15px", "20px"]}
+              ml="15px"
+            />
             <Text
               pos={"absolute"}
-              margin={"105px 15px"}
+              margin={["20px 70px", "105px 15px"]}
               fontFamily={"Ubuntu"}
               fontWeight={"700"}
               fontSize={"16px"}
@@ -315,14 +495,26 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
             </Text>
             <Text
               pos={"absolute"}
-              margin={"125px 15px"}
+              margin={["42px 70px", "125px 15px"]}
               fontFamily={"Ubuntu"}
               fontWeight={"500"}
-              fontSize={"16px"}
+              fontSize={"14px"}
               lineHeight={"15px"}
               color={"#9A9BA0"}
             >
-              $15/mo
+              ${isYearly ? "150/yr" : "15/mo"}
+            </Text>
+            <Text
+              display={isYearly ? "yes" : "none"}
+              pos={"absolute"}
+              margin={["65px 70px", "150px 15px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              fontSize={"14px"}
+              lineHeight={"15px"}
+              color="hsl(213, 96%, 18%)"
+            >
+              2 months free
             </Text>
           </Box>
         </FormControl>
@@ -331,8 +523,8 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
       {/* Monthly or yearly*/}
       <FormControl>
         <Box
-          width={"450px"}
-          height={"60px"}
+          w={["290px", "405px"]}
+          h={["45px", "60px"]}
           display="flex"
           background={"hsl(217, 100%, 97%)"}
           alignItems="center"
@@ -348,17 +540,17 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
           type={"submit"}
           pos="relative"
         >
-          <Box h="40px">
+          <Box h={"40px"}>
             <Text
-              ml="15px"
+              ml={["-15px", "15px"]}
               pos={"absolute"}
               my="15px"
               fontFamily={"Ubuntu"}
               fontWeight={"700"}
-              fontSize={"16px"}
+              fontSize={"15px"}
               textAlign="center"
               lineHeight={"10px"}
-              color=" hsl(213, 96%, 18%) "
+              color={!isYearly ? "hsl(213, 96%, 18%)" : "#9A9BA0"}
             >
               Monthly
             </Text>
@@ -366,22 +558,24 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
 
           <Box h="40px">
             <Switch
-              size={"lg"}
-              colorScheme="red"
+              size={["md", "lg"]}
+              // colorScheme="facebook.200"
+              colorScheme="gray"
+              onChange={handleChange}
               ref={(el) => (userRef.current["duration"] = el)}
             />
           </Box>
 
           <Box h="40px">
             <Text
-              ml={"-73px"}
+              ml={["-43px", "-73px"]}
               pos={"absolute"}
               my="15px"
               fontFamily={"Ubuntu"}
               fontWeight={"700"}
-              fontSize={"16px"}
+              fontSize={"15px"}
               lineHeight={"10px"}
-              color={"#9A9BA0"}
+              color={isYearly ? "hsl(213, 96%, 18%)" : "#9A9BA0"}
             >
               Yearly
             </Text>
@@ -393,7 +587,7 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
       <FormControl>
         <Text
           pos={"absolute"}
-          margin={"70px 0px"}
+          mt={[isYearly ? "60px" : "135px", "105px"]}
           fontFamily={"Ubuntu"}
           fontWeight={"500"}
           fontSize={"16px"}
@@ -404,20 +598,20 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
           <Link>Go Back</Link>
         </Text>
         <Button
-          width={"120px"}
-          height={"50px"}
-          margin={"90px 0px 0px 325px"}
+          width={["100px", "120px"]}
+          height={["40px", "50px"]}
+          mt={[isYearly ? "50px" : "125px", "90px"]}
+          mb={["10px", "0px"]}
+          ml={["200px", "325px"]}
           borderRadius={"10px"}
           color={"white"}
-          // _hover="none"sssss
+          // _hover="none"
           fontFamily={"Ubuntu"}
           fontStyle={"normal"}
           fontWeight={"500"}
           fontSize={"16px"}
           lineHeight={"36px"}
-          // bgColor={formValid ? "#440376" : "rgba(68, 3, 118, 0.6)"}
           bgColor={"#174A8B"}
-          // type={"submit"}
           onClick={nextPage}
         >
           Next Step
@@ -427,244 +621,313 @@ export const PlanInputs = ({ nextPage, previousPage, userRef }) => {
   );
 };
 
-export const AddonInputs = ({ userRef, nextPage, previousPage }) => (
-  <Box>
-    <Flex w="450px" flexDirection={"column"} position={"relative"}>
-      {/* Online Service*/}
-      <FormControl mr={"10px"}>
-        <Box
-          width={"450px"}
-          height={"80px"}
-          display="flex"
-          mt={"40px"}
-          borderRadius={"10px"}
-          color={"blue"}
+export const AddonInputs = ({ userRef, nextPage, previousPage, isYearly }) => {
+  const handleClick1 = () => {
+    userRef.current["tick1"].checked == true
+      ? document
+          .getElementById("tick1")
+          .setAttribute(
+            "style",
+            "border : 1px solid #174A8B; background-color : hsl(217, 100%, 97%)"
+          )
+      : document
+          .getElementById("tick1")
+          .setAttribute(
+            "style",
+            "border : 1px solid #D9D9DB; background-color : white"
+          );
+  };
+  const handleClick2 = () => {
+    userRef.current["tick2"].checked == true
+      ? document
+          .getElementById("tick2")
+          .setAttribute(
+            "style",
+            "border : 1px solid #174A8B; background-color : hsl(217, 100%, 97%)"
+          )
+      : document
+          .getElementById("tick2")
+          .setAttribute(
+            "style",
+            "border : 1px solid #D9D9DB; background-color : white"
+          );
+  };
+  const handleClick3 = () => {
+    userRef.current["tick3"].checked == true
+      ? document
+          .getElementById("tick3")
+          .setAttribute(
+            "style",
+            "border : 1px solid #174A8B; background-color : hsl(217, 100%, 97%)"
+          )
+      : document
+          .getElementById("tick3")
+          .setAttribute(
+            "style",
+            "border : 1px solid #D9D9DB; background-color : white"
+          );
+  };
+
+  return (
+    <Box>
+      <Flex
+        w={["290px", "450px"]}
+        flexDirection={"column"}
+        position={"relative"}
+      >
+        {/* Online Service*/}
+        <FormControl mr={"10px"}>
+          <Box
+            id="tick1"
+            width={["290px", "450px"]}
+            height={["60px", "80px"]}
+            display="flex"
+            mt={["25px", "40px"]}
+            borderRadius={"10px"}
+            border="1px solid #D9D9DB"
+            _hover={{ border: "1px solid #174A8B" }}
+            pos="relative"
+          >
+            <Checkbox
+              size="lg"
+              ml={["15px", "30px"]}
+              type="checkbox"
+              colorScheme={"purple"}
+              required
+              onChange={handleClick1}
+              ref={(el) => (userRef.current["tick1"] = el)}
+            ></Checkbox>
+
+            <Text
+              pos={"absolute"}
+              margin={["15px 50px", "20px 97px"]}
+              fontSize={["14px", "16px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"700"}
+              lineHeight={"10px"}
+              color=" hsl(213, 96%, 18%) "
+            >
+              Online Services
+            </Text>
+            <Text
+              pos={"absolute"}
+              margin={["30px 50px", "40px 97px"]}
+              fontSize={["12px", "14px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              lineHeight={"15px"}
+              color={"#9A9BA0"}
+            >
+              Access to multiplayer games
+            </Text>
+            <Text
+              pos={"absolute"}
+              margin={["20px 240px", "35px 370px"]}
+              fontSize={["12px", "13px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              lineHeight={"15px"}
+              color={"hsl(213, 96%, 18%)"}
+            >
+              ${isYearly ? "10/yr" : "1/mo"}
+            </Text>
+          </Box>
+        </FormControl>
+
+        {/* Larger Storage*/}
+        <FormControl mr={"10px"}>
+          <Box
+            id="tick2"
+            width={["290px", "450px"]}
+            height={["60px", "80px"]}
+            display="flex"
+            my={["15px", "20px"]}
+            borderRadius={"10px"}
+            _hover={{ border: "1px solid #174A8B" }}
+            border="1px solid #D9D9DB"
+            pos="relative"
+          >
+            <Checkbox
+              size="lg"
+              ml={["15px", "30px"]}
+              type={"checkbox"}
+              colorScheme={"purple"}
+              onChange={handleClick2}
+              ref={(el) => (userRef.current["tick2"] = el)}
+            ></Checkbox>
+            <Text
+              pos={"absolute"}
+              margin={["15px 50px", "20px 97px"]}
+              fontSize={["14px", "16px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"700"}
+              lineHeight={"10px"}
+              color=" hsl(213, 96%, 18%) "
+            >
+              Larger Storage
+            </Text>
+            <Text
+              pos={"absolute"}
+              margin={["30px 50px", "40px 97px"]}
+              fontSize={["12px", "14px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              lineHeight={"15px"}
+              color={"#9A9BA0"}
+            >
+              Extra 1TB of cloud save
+            </Text>
+            <Text
+              pos={"absolute"}
+              margin={["20px 240px", "35px 370px"]}
+              fontSize={["12px", "13px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              lineHeight={"15px"}
+              color={"hsl(213, 96%, 18%)"}
+            >
+              ${isYearly ? "20/yr" : "2/mo"}
+            </Text>
+          </Box>
+        </FormControl>
+
+        {/* Customizable Profile*/}
+        <FormControl mr={"10px"}>
+          <Box
+            id="tick3"
+            width={["290px", "450px"]}
+            height={["60px", "80px"]}
+            display="flex"
+            mt={["0px", "0px"]}
+            borderRadius={"10px"}
+            _hover={{ border: "1px solid #174A8B" }}
+            border="1px solid #D9D9DB"
+            pos="relative"
+          >
+            <Checkbox
+              size="lg"
+              ml={["15px", "30px"]}
+              type={"checkbox"}
+              colorScheme={"purple"}
+              onChange={handleClick3}
+              ref={(el) => (userRef.current["tick3"] = el)}
+            ></Checkbox>
+            <Text
+              pos={"absolute"}
+              margin={["15px 50px", "20px 97px"]}
+              fontSize={["14px", "16px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"700"}
+              lineHeight={"10px"}
+              color=" hsl(213, 96%, 18%) "
+            >
+              Customizable Profile
+            </Text>
+            <Text
+              pos={"absolute"}
+              margin={["30px 50px", "40px 97px"]}
+              fontSize={["12px", "14px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              lineHeight={"15px"}
+              color={"#9A9BA0"}
+            >
+              Custom theme on your profile
+            </Text>
+            <Text
+              pos={"absolute"}
+              margin={["20px 240px", "35px 370px"]}
+              fontSize={["12px", "13px"]}
+              fontFamily={"Ubuntu"}
+              fontWeight={"500"}
+              lineHeight={"15px"}
+              color={"hsl(213, 96%, 18%)"}
+            >
+              ${isYearly ? "20/yr" : "2/mo"}
+            </Text>
+          </Box>
+        </FormControl>
+      </Flex>
+
+      {/* Submit */}
+      <FormControl>
+        <Text
+          pos={"absolute"}
+          mt={["150px", "85px"]}
+          mb={["10px", "0px"]}
           fontFamily={"Ubuntu"}
-          fontStyle={"normal"}
           fontWeight={"500"}
           fontSize={"16px"}
-          lineHeight={"36px"}
-          border="1px solid #D9D9DB"
-          // onClick={{ border: "1px solid red" }}
-          bgColor={"white"}
-          pos="relative"
+          lineHeight={"15px"}
+          color={"#9A9BA0"}
+          onClick={previousPage}
         >
-          <Checkbox
-            size={"lg"}
-            ml="30px"
-            type="checkbox"
-            required
-            ref={(el) => (userRef.current["tick1"] = el)}
-          ></Checkbox>
-
-          <Text
-            pos={"absolute"}
-            margin={"20px 97px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"700"}
-            fontSize={"16px"}
-            lineHeight={"10px"}
-            color=" hsl(213, 96%, 18%) "
-          >
-            Online Services
-          </Text>
-          <Text
-            pos={"absolute"}
-            margin={"40px 97px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"15px"}
-            color={"#9A9BA0"}
-          >
-            Access to multiplayer games
-          </Text>
-          <Text
-            pos={"absolute"}
-            margin={"35px 370px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"15px"}
-            color={"hsl(213, 96%, 18%)"}
-          >
-            $1/mo
-          </Text>
-        </Box>
-      </FormControl>
-
-      {/* Larger Storage*/}
-      <FormControl mr={"10px"}>
-        <Box
-          width={"450px"}
-          height={"80px"}
-          display="flex"
-          margin={"20px 0px"}
+          <Link>Go Back</Link>
+        </Text>
+        <Button
+          width={["100px", "120px"]}
+          height={["40px", "50px"]}
+          mt={["140px", "70px"]}
+          mb={["10px", "0px"]}
+          ml={["200px", "325px"]}
           borderRadius={"10px"}
-          color={"blue"}
+          color={"white"}
           // _hover="none"
           fontFamily={"Ubuntu"}
           fontStyle={"normal"}
           fontWeight={"500"}
           fontSize={"16px"}
           lineHeight={"36px"}
-          border="1px solid #D9D9DB"
-          // onClick={{ border: "1px solid red" }}
-          bgColor={"white"}
-          pos="relative"
+          bgColor={"#174A8B"}
+          onClick={nextPage}
         >
-          <Checkbox
-            size={"lg"}
-            ml="30px"
-            type={"checkbox"}
-            ref={(el) => (userRef.current["tick2"] = el)}
-          ></Checkbox>
-          <Text
-            pos={"absolute"}
-            margin={"20px 97px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"700"}
-            fontSize={"16px"}
-            lineHeight={"10px"}
-            color=" hsl(213, 96%, 18%) "
-          >
-            Larger Storage
-          </Text>
-          <Text
-            pos={"absolute"}
-            margin={"40px 97px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"15px"}
-            color={"#9A9BA0"}
-          >
-            Extra 1TB of cloud save
-          </Text>
-          <Text
-            pos={"absolute"}
-            margin={"35px 370px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"15px"}
-            color={"hsl(213, 96%, 18%)"}
-          >
-            $2/mo
-          </Text>
-        </Box>
+          Next Step
+        </Button>
       </FormControl>
+    </Box>
+  );
+};
 
-      {/* Customizable Profile*/}
-      <FormControl mr={"10px"}>
-        <Box
-          width={"450px"}
-          height={"80px"}
-          display="flex"
-          margin={"0px 0px"}
-          borderRadius={"10px"}
-          color={"blue"}
-          // _hover="none"
-          fontFamily={"Ubuntu"}
-          fontStyle={"normal"}
-          fontWeight={"500"}
-          fontSize={"16px"}
-          lineHeight={"36px"}
-          border="1px solid #D9D9DB"
-          // onClick={{ border: "1px solid red" }}
-          bgColor={"white"}
-          pos="relative"
-        >
-          <Checkbox
-            size={"lg"}
-            ml="30px"
-            type={"checkbox"}
-            ref={(el) => (userRef.current["tick3"] = el)}
-          ></Checkbox>
-          <Text
-            pos={"absolute"}
-            margin={"20px 97px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"700"}
-            fontSize={"16px"}
-            lineHeight={"10px"}
-            color=" hsl(213, 96%, 18%) "
-          >
-            Customizable Profile
-          </Text>
-          <Text
-            pos={"absolute"}
-            margin={"40px 97px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"15px"}
-            color={"#9A9BA0"}
-          >
-            Custom theme on your profile
-          </Text>
-          <Text
-            pos={"absolute"}
-            margin={"35px 370px"}
-            fontFamily={"Ubuntu"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"15px"}
-            color={"hsl(213, 96%, 18%)"}
-          >
-            $2/mo
-          </Text>
-        </Box>
-      </FormControl>
-    </Flex>
-
-    {/* Submit */}
-    <FormControl>
-      <Text
-        pos={"absolute"}
-        margin={"100px 0px"}
-        fontFamily={"Ubuntu"}
-        fontWeight={"500"}
-        fontSize={"16px"}
-        lineHeight={"15px"}
-        color={"#9A9BA0"}
-        onClick={previousPage}
-      >
-        <Link>Go Back</Link>
-      </Text>
-      <Button
-        width={"120px"}
-        height={"50px"}
-        margin={"80px 0px 0px 325px"}
-        borderRadius={"10px"}
-        color={"white"}
-        // _hover="none"
-        fontFamily={"Ubuntu"}
-        fontStyle={"normal"}
-        fontWeight={"500"}
-        fontSize={"16px"}
-        lineHeight={"36px"}
-        // bgColor={formValid ? "#440376" : "rgba(68, 3, 118, 0.6)"}
-        bgColor={"#174A8B"}
-        onClick={nextPage}
-      >
-        Next Step
-      </Button>
-    </FormControl>
-  </Box>
-);
-
-export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
+export const Summarycheck = ({
+  userData,
+  nextPage,
+  previousPage,
+  isYearly,
+}) => {
   let planprice = "";
   userData.plan == "Arcade"
-    ? (planprice = 9)
+    ? isYearly
+      ? (planprice = 90)
+      : (planprice = 9)
     : userData.plan == "Advanced"
-    ? (planprice = 12)
+    ? isYearly
+      ? (planprice = 120)
+      : (planprice = 12)
+    : isYearly
+    ? (planprice = 150)
     : (planprice = 15);
+
+  //number of selected addons
+  let p1 = 0;
+  let p2 = 0;
+  let p3 = 0;
+  userData.tick1 == true ? (p1 = 1) : 0;
+  userData.tick2 == true ? (p2 = 1) : 0;
+  userData.tick3 == true ? (p3 = 1) : 0;
+  const addonSelected = p1 + p2 + p3;
+
+  let summaryheight = "";
+  addonSelected == 2
+    ? (summaryheight = "190px")
+    : addonSelected == 3
+    ? (summaryheight = ["210px", "250px"])
+    : (summaryheight = "150px");
+
+  console.log(addonSelected);
   const addonprice = {
-    online: userData.tick1 === true ? 1 : 0,
-    storage: userData.tick2 === true ? 2 : 0,
-    profile: userData.tick3 === true ? 2 : 0,
+    online: userData.tick1 === true ? (isYearly ? 10 : 1) : 0,
+    storage: userData.tick2 === true ? (isYearly ? 20 : 2) : 0,
+    profile: userData.tick3 === true ? (isYearly ? 20 : 2) : 0,
   };
   const total =
     planprice + addonprice.online + addonprice.storage + addonprice.profile;
@@ -672,22 +935,19 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
 
   return (
     <Box>
-      <Flex w="450px" flexDirection={"column"} position={"relative"}>
+      <Flex
+        w={["290px", "450px"]}
+        flexDirection={"column"}
+        position={"relative"}
+      >
         {/* Online Service*/}
         <FormControl mr={"10px"}>
           <Box
-            width={"450px"}
-            height={total - planprice < 3 ? "190px" : "250px"}
+            width={["290px", "450px"]}
+            height={summaryheight}
             display="grid"
             mt={"40px"}
             borderRadius={"10px"}
-            color={"blue"}
-            // _hover="none"
-            fontFamily={"Ubuntu"}
-            fontStyle={"normal"}
-            fontWeight={"500"}
-            fontSize={"16px"}
-            lineHeight={"36px"}
             bgColor={"#F8F9FE"}
             type={"submit"}
             pos="relative"
@@ -695,11 +955,11 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
             <Box pos={"relative"}>
               <Text
                 pos={"relative"}
-                margin={"20px 0px 0px 25px"}
+                margin={["20px 0px 0px 20px", "20px 0px 0px 25px"]}
+                fontSize={["15px", "18px"]}
                 w="200px"
                 fontFamily={"Ubuntu"}
                 fontWeight={"700"}
-                fontSize={"18px"}
                 lineHeight={"10px"}
                 color=" hsl(213, 96%, 18%) "
               >
@@ -707,10 +967,10 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
               </Text>
               <Text
                 pos={"relative"}
-                margin={"20px 0px 0px 25px"}
+                margin={["10px 0px 0px 20px", "20px 0px 0px 25px"]}
+                fontSize={"15px"}
                 fontFamily={"Ubuntu"}
                 fontWeight={"500"}
-                fontSize={"15px"}
                 lineHeight={"15px"}
                 color={"#6153C4"}
                 onClick={previousPage}
@@ -719,14 +979,14 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
               </Text>
               <Text
                 pos={"relative"}
-                margin={"-25px 0px 0px 365px"}
+                margin={["-25px 0px 0px 227px", "-25px 0px 0px 370px"]}
+                fontSize={["15px", "17px"]}
                 fontFamily={"Ubuntu"}
                 fontWeight={"700"}
-                fontSize={"17px"}
                 lineHeight={"15px"}
                 color={"hsl(213, 96%, 18%)"}
               >
-                ${planprice}/mo
+                ${planprice}/{isYearly ? "yr" : "mo"}
               </Text>
             </Box>
 
@@ -736,7 +996,7 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
               bg={"hsl(213, 96%, 18%)"}
               h="0.1px"
               opacity={"0.09"}
-              w="420px"
+              w={["260px", "420px"]}
               m={"10px 0px 0px 15px"}
             ></Box>
 
@@ -747,11 +1007,11 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
             >
               <Text
                 pos={"relative"}
-                margin={"15px 0px 0px 25px"}
+                margin={["0px 0px 0px 20px", "15px 0px 0px 25px"]}
+                fontSize="15px"
                 fontFamily={"Ubuntu"}
                 w="100px"
                 fontWeight={"500"}
-                fontSize={"16px"}
                 lineHeight={"15px"}
                 color={"#9A9BA0"}
               >
@@ -759,14 +1019,14 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
               </Text>
               <Text
                 pos={"relative"}
-                margin={"15px  0px 0px 240px"}
+                margin={["0px 0px 0px 100px", "15px 0px 0px 240px"]}
+                fontSize={["15px", "16px"]}
                 fontFamily={"Ubuntu"}
                 fontWeight={"500"}
-                fontSize={"16px"}
                 lineHeight={"15px"}
                 color={"hsl(213, 96%, 18%)"}
               >
-                +$1/mo
+                +${isYearly ? "10/yr" : "1/mo"}
               </Text>
             </Box>
 
@@ -776,11 +1036,10 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
             >
               <Text
                 pos={"relative"}
-                margin={"15px 0px 0px 25px"}
+                margin={["0px 0px 0px 20px", "15px 0px 0px 25px"]}
                 fontFamily={"Ubuntu"}
-                w="100px"
                 fontWeight={"500"}
-                fontSize={"16px"}
+                fontSize={"15px"}
                 lineHeight={"15px"}
                 color={"#9A9BA0"}
               >
@@ -788,14 +1047,14 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
               </Text>
               <Text
                 pos={"relative"}
-                margin={"15px 0px 0px 240px"}
+                margin={["0px 0px 0px 100px", "15px 0px 0px 240px"]}
+                fontSize={["15px", "16px"]}
                 fontFamily={"Ubuntu"}
                 fontWeight={"500"}
-                fontSize={"16px"}
                 lineHeight={"15px"}
                 color={"hsl(213, 96%, 18%)"}
               >
-                +$2/mo
+                +${isYearly ? "20/yr" : "2/mo"}
               </Text>
             </Box>
 
@@ -805,10 +1064,10 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
             >
               <Text
                 pos={"relative"}
-                margin={"15px 0px 15px 25px"}
+                margin={["0px 0px 0px 20px", "15px 0px 15px 25px"]}
                 fontFamily={"Ubuntu"}
                 fontWeight={"500"}
-                fontSize={"16px"}
+                fontSize={"15px"}
                 lineHeight={"15px"}
                 color={"#9A9BA0"}
               >
@@ -816,14 +1075,14 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
               </Text>
               <Text
                 pos={"relative"}
-                margin={"15px 0px 15px 205px"}
+                margin={["0px 0px 0px 60px", "15px 0px 15px 200px"]}
+                fontSize={["15px", "16px"]}
                 fontFamily={"Ubuntu"}
                 fontWeight={"500"}
-                fontSize={"16px"}
                 lineHeight={"15px"}
                 color={"hsl(213, 96%, 18%)"}
               >
-                +$2/mo
+                +${isYearly ? "20/yr" : "2/mo"}
               </Text>
             </Box>
           </Box>
@@ -832,10 +1091,10 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
 
           <Text
             pos={"absolute"}
-            margin={userData.tick3 == true ? "70px 25px" : "30px 0px 0px 25px"}
+            margin={["30px 0px 0px 20px", "30px 0px 0px 25px"]}
+            fontSize={["15px", "16px"]}
             fontFamily={"Ubuntu"}
             fontWeight={"500"}
-            fontSize={"16px"}
             lineHeight={"15px"}
             color={"#9A9BA0"}
           >
@@ -843,17 +1102,14 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
           </Text>
           <Text
             pos={"absolute"}
-            margin={
-              userData.tick3 == true ? "70px 350px" : "30px 0px 0px 350px"
-            }
-            // margin={"30px 350px"}
+            margin={["30px 0px 0px 210px", "30px 0px 0px 350px"]}
+            fontSize={["17px", "20px"]}
             fontFamily={"Ubuntu"}
             fontWeight={"700"}
-            fontSize={"20px"}
             lineHeight={"15px"}
             color={"#6153C4"}
           >
-            ${total}/mo
+            ${total}/{isYearly ? "yr" : "mo"}
           </Text>
         </FormControl>
       </Flex>
@@ -862,7 +1118,14 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
       <FormControl>
         <Text
           pos={"absolute"}
-          margin={"180px 0px"}
+          mt={[
+            addonSelected == 2
+              ? "153px"
+              : addonSelected == 3
+              ? "133px"
+              : "195px",
+            "115px",
+          ]}
           fontFamily={"Ubuntu"}
           fontWeight={"500"}
           fontSize={"16px"}
@@ -873,9 +1136,18 @@ export const Summarycheck = ({ userData, nextPage, previousPage, userRef }) => {
           <Link>Go Back</Link>
         </Text>
         <Button
-          width={"120px"}
-          height={"50px"}
-          margin={"160px 0px 0px 325px"}
+          width={["100px", "120px"]}
+          height={["40px", "50px"]}
+          mt={[
+            addonSelected == 2
+              ? "143px"
+              : addonSelected == 3
+              ? "123px"
+              : "185px",
+            "100px",
+          ]}
+          mb={["10px", "0px"]}
+          ml={["200px", "325px"]}
           borderRadius={"10px"}
           color={"white"}
           // _hover="#938CFE"
