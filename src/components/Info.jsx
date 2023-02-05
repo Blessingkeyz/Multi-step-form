@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import React from "react";
 import { Header, Inputs } from ".";
 
-const Personal = ({ userRef, nextPage }) => {
+const Personal = ({ userRef, formValid, nextPage }) => {
   return (
     <Box>
       <Box
@@ -17,6 +17,7 @@ const Personal = ({ userRef, nextPage }) => {
         />
 
         <Inputs
+          formValid={formValid}
           userRef={userRef}
           inp1={"Name"}
           inp1P="e.g. Stephen King"

@@ -115,7 +115,7 @@ export const Header = ({ text, title }) => (
 
 export const Inputs = ({
   userRef,
-
+  formValid,
   nextPage,
   inp1,
   inp2,
@@ -895,17 +895,17 @@ export const Summarycheck = ({
   isYearly,
 }) => {
   let planprice = "";
-  userData.plan == "Arcade"
+  userData.plan == "Pro"
     ? isYearly
-      ? (planprice = 90)
-      : (planprice = 9)
+      ? (planprice = 150)
+      : (planprice = 15)
     : userData.plan == "Advanced"
     ? isYearly
       ? (planprice = 120)
       : (planprice = 12)
     : isYearly
-    ? (planprice = 150)
-    : (planprice = 15);
+    ? (planprice = 90)
+    : (planprice = 9);
 
   //number of selected addons
   let p1 = 0;
@@ -1102,7 +1102,7 @@ export const Summarycheck = ({
           </Text>
           <Text
             pos={"absolute"}
-            margin={["30px 0px 0px 210px", "30px 0px 0px 350px"]}
+            margin={["30px 0px 0px 210px", "30px 0px 0px 360px"]}
             fontSize={["17px", "20px"]}
             fontFamily={"Ubuntu"}
             fontWeight={"700"}
@@ -1124,7 +1124,11 @@ export const Summarycheck = ({
               : addonSelected == 3
               ? "133px"
               : "195px",
-            "115px",
+            addonSelected == 2
+              ? "175px"
+              : addonSelected == 3
+              ? "115px"
+              : "215px",
           ]}
           fontFamily={"Ubuntu"}
           fontWeight={"500"}
@@ -1144,7 +1148,12 @@ export const Summarycheck = ({
               : addonSelected == 3
               ? "123px"
               : "185px",
-            "100px",
+
+            addonSelected == 2
+              ? "163px"
+              : addonSelected == 3
+              ? "100px"
+              : "200px",
           ]}
           mb={["10px", "0px"]}
           ml={["200px", "325px"]}
@@ -1158,7 +1167,6 @@ export const Summarycheck = ({
           lineHeight={"36px"}
           // bgColor={formValid ? "#440376" : "rgba(68, 3, 118, 0.6)"}
           bgColor={"#483EFF"}
-          type={"submit"}
           onClick={nextPage}
         >
           Confirm

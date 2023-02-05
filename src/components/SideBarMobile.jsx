@@ -33,8 +33,10 @@ const SideBarMobile = ({ page }) => {
           />
           <SideCompoM
             step={"4"}
-            numcolor={page == 3 ? "none" : "white"}
-            circlebgcolor={page == 3 ? "hsl(206, 94%, 87%)" : "none"}
+            numcolor={page == 3 || page == 4 ? "none" : "white"}
+            circlebgcolor={
+              page == 3 || page == 4 ? "hsl(206, 94%, 87%)" : "none"
+            }
           />
         </Flex>
       </Box>
